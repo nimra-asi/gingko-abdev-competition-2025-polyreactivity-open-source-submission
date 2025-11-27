@@ -1,0 +1,17 @@
+pandas
+pyarrow
+numpy
+matplotlib
+seaborn
+scikit-learn
+xgboost
+lightgbm
+torch
+transformers
+tabpfn
+scikit-optimize
+openpyxl
+umap-learn
+
+# for MRMR / feature selection
+# feature-engine

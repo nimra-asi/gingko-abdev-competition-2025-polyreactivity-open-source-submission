@@ -1,0 +1,13 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+torch
+transformers
+rjieba
+lbster
+umap-learn
+ablang2
+
+openprotein-python
