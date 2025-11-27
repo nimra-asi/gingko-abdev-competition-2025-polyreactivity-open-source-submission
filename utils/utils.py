@@ -67,38 +67,3 @@ def create_feature_space_test_set(df, features_list):
 
     return df
 
-
-
-
-
-def create_feature_space_full_seqs(df, features_list):
-    if "esm2" in features_list:
-        data = pd.read_parquet("/Workspace/Users/nimra.asi.ext@boehringer-ingelheim.com/gingko-abdev-competition/data/precomputed_embeddings/full_length/gdpa1_full_esm2_mean_no_sep_embeddings.parquet")
-        df = df.merge(data, on=["antibody_id", "antibody_name"], how="left")
-
-        data = pd.read_parquet("/Workspace/Users/nimra.asi.ext@boehringer-ingelheim.com/gingko-abdev-competition/data/precomputed_embeddings/full_length/gdpa1_full_esm2_cls_embeddings.parquet")
-        df = df.merge(data, on=["antibody_id", "antibody_name"], how="left")
-    
-    if "ablang2" in features_list:
-        data = pd.read_parquet("/Workspace/Users/nimra.asi.ext@boehringer-ingelheim.com/gingko-abdev-competition/data/precomputed_embeddings/full_length/gdpa1_full_ablang2_embeddings.parquet")
-        df = df.merge(data, on=["antibody_id", "antibody_name"], how="left")
-
-    if "igbert" in features_list:
-        data = pd.read_parquet("/Workspace/Users/nimra.asi.ext@boehringer-ingelheim.com/gingko-abdev-competition/data/precomputed_embeddings/full_length/gdpa1_full_igbert_mean_embeddings.parquet")
-        df = df.merge(data, on=["antibody_id", "antibody_name"], how="left")
-
-    if "antiberta2" in features_list:
-        data = pd.read_parquet("/Workspace/Users/nimra.asi.ext@boehringer-ingelheim.com/gingko-abdev-competition/data/precomputed_embeddings/full_length/gdpa1_full_antiberta2_embeddings.parquet")
-        df = df.merge(data, on=["antibody_id", "antibody_name"], how="left")
-    
-    if "antiberta2_cssp" in features_list:
-        data = pd.read_parquet("/Workspace/Users/nimra.asi.ext@boehringer-ingelheim.com/gingko-abdev-competition/data/precomputed_embeddings/full_length/gdpa1_full_antiberta2_cssp_embeddings.parquet")
-        df = df.merge(data, on=["antibody_id", "antibody_name"], how="left")
-
-    if "moe" in features_list:
-        data = pd.read_csv("/Workspace/Users/nimra.asi.ext@boehringer-ingelheim.com/gingko-abdev-competition/data/MOE_properties.csv")
-        # update the col names to prefix the property cols with moe
-        data.columns = ["antibody_id", "antibody_name"] + ["moe_" + x for x in data.columns[2:]]
-        df = df.merge(data, on=["antibody_id", "antibody_name"], how="left")
-
-    return df
